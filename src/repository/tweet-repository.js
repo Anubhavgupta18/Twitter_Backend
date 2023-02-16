@@ -9,6 +9,7 @@ class TweetRepository{
             console.log(error);
         }
     }
+
     async get(tweetId) {
         try {
             const tweet = await Tweet.findById(tweetId);
@@ -17,15 +18,18 @@ class TweetRepository{
             console.log(error);
         }
     }
+
     async getWithComments(tweetId)
     {
         try {
-            const tweet = await Tweet.findById(tweetId).populate({ path: 'comments' });
+            //lean function return a plain Js object not a mongoose object 
+            const tweet = await Tweet.findById(tweetId).populate({ path: 'comments' }).lean();
             return tweet;
         } catch (error) {
             console.log(error);
         }
     }
+
     async update(tweetId,data) {
         try {
             const tweet = await Tweet.findByIdAndUpdate(tweetId, data, { new: true });
@@ -34,9 +38,19 @@ class TweetRepository{
             console.log(error);
         }
     }
+
     async destroy(tweetId) {
         try {
             const tweet = await Tweet.findByIdAndDelete(tweetId);
+            return tweet;
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    async getAll(offest,limit) {
+        try {
+            const tweet = await Tweet.find().skip(offest).limit(limit);
             return tweet;
         } catch (error) {
             console.log(error);

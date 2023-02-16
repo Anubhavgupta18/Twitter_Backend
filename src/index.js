@@ -12,6 +12,6 @@ app.listen(3000, async () => {
     await connect();
     console.log('Mongodb server connected');
     const Tweet = new tweetrepo();
-    const tweet = await Tweet.getWithComments('63ed184d124748fb944897be');
+    const tweet = await Tweet.create({content:'This tweet is triggered using hooks'});
     console.log(tweet);
 });
