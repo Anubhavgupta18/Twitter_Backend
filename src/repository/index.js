@@ -1,8 +1,10 @@
 import TweetRepository from './tweet-repository.js';
 import HashtagRepository from './hashtag-repository.js';
-import crudRepository from './crud-repository.js';
+import CrudRepository from './crud-repository.js';
+import LikeRepository from './like-repository.js';
 export {
     TweetRepository,
     HashtagRepository,
-    crudRepository
+    CrudRepository,
+    LikeRepository
 }
