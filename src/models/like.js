@@ -16,7 +16,7 @@ const likeSchema = new mongoose.Schema({
         required: true,
         ref:'User'
     }
-
+    
 }, { timestamps: true });
 
 const Like = mongoose.model('Like', likeSchema);
