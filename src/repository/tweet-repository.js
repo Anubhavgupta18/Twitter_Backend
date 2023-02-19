@@ -9,7 +9,12 @@ class TweetRepository extends crudRepository{
     {
         try {
             //lean function return a plain Js object not a mongoose object 
-            const tweet = await Tweet.findById(tweetId).populate({ path: 'comments' }).lean();
+            const tweet = await Tweet.findById(tweetId).populate({
+                path: 'comments',
+                populate: {
+                    path:'comments'
+                }
+            }).lean();
             return tweet;
         } catch (error) {
             console.log(error);
