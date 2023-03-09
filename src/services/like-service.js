@@ -31,7 +31,7 @@ class LikeService {
                 await model.save();
                 await exists.remove();
 
-                var isRemoved = true;
+                var isRemoved = "like was removed successfully";
             } 
             else {
                 const like = await this.likeRepository.create({
@@ -42,7 +42,7 @@ class LikeService {
                 model.likes.push(like);
                 await model.save();
 
-                var isRemoved = false;
+                var isRemoved = "like was added successfully";
             }
 
             return isRemoved;
