@@ -1,6 +1,7 @@
 import mongoose from "mongoose";
 import bcrypt from "bcrypt";
 import jwt from 'jsonwebtoken';
+import { secretKey } from "../configs/serverConfig.js";
 
 const userSchema = new mongoose.Schema({
     email: {
@@ -31,7 +32,7 @@ userSchema.methods.checkPassword = function (userPlainPassword, encryptedPasswor
 }
 
 userSchema.methods.genJWT = function (data) {
-    const token = jwt.sign(data, 'twitter_backend_secret_key', { expiresIn: '1h' });
+    const token = jwt.sign(data,secretKey, { expiresIn: '5h' });
     return token;
 }
 
