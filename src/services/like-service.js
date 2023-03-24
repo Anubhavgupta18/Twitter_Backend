@@ -1,4 +1,4 @@
-import { TweetRepository, LikeRepository,CommentRepository } from "../repository/index.js";
+import { TweetRepository, LikeRepository, CommentRepository } from "../repository/index.js";
 class LikeService {
     constructor() {
         this.tweetRepository = new TweetRepository();
@@ -32,7 +32,7 @@ class LikeService {
                 await exists.remove();
 
                 var isRemoved = "like was removed successfully";
-            } 
+            }
             else {
                 const like = await this.likeRepository.create({
                     user: userId,
@@ -44,7 +44,6 @@ class LikeService {
 
                 var isRemoved = "like was added successfully";
             }
-
             return isRemoved;
         } catch (error) {
             console.log('Something went wrong in the like service layer');

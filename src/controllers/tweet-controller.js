@@ -11,11 +11,13 @@ const createTweet = async (req, res) => {
         singleUploader(req, res, async function (err, data) {
             if (err) {
                 return res.status(500).json({
-                    error:err
+                    error: err
                 });
             }
             const payload = { ...req.body };
-            payload.image = req.file.location;
+            if (req.file) {
+                payload.image = req.file.location;
+            }
             const tweet = await tweetService.create(payload);
             return res.status(201).json({
                 data: tweet,

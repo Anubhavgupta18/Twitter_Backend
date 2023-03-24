@@ -4,8 +4,6 @@ export const authenticate = (req, res, next) => {
     passport.authenticate('jwt', (err, user) => {
         if(err) next(err);
         if (!user) {
-
-            console.log('inside if block')
             return res.status(401).json({
                 message: 'Unauthorised access no token'
             })
