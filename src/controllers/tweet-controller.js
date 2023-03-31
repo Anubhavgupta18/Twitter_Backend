@@ -15,6 +15,7 @@ const createTweet = async (req, res) => {
                 });
             }
             const payload = { ...req.body };
+            console.log(req);
             if (req.file) {
                 payload.image = req.file.location;
             }

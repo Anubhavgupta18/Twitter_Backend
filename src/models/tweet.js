@@ -19,7 +19,8 @@ const tweetSchema = new mongoose.Schema({
         }
     ],
     image: {
-        type:String
+        type: String,
+        default:null
     }
 }, { timestamps: true });
 
